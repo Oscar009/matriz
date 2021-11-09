@@ -7,9 +7,13 @@
 
 class matriz
 {
+	//numero de celdas
 	int** cells;
-	int rows;
-	int columns;
+	int rows;//copia de original
+	int columns;//copia de original
+	//uso de variables para un reSize
+	int rowsReSize;
+	int columnsReSize;
 
 public:
 	matriz(int, int);

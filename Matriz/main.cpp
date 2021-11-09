@@ -18,8 +18,8 @@ using namespace std;
 int main() {
 	srand((unsigned)time(nullptr));
 
-	matriz A(2, 2);
-	matriz B(2, 2);
+	matriz A(3, 2);
+	matriz B(2, 3);
 
 	A.fillRandom();
 	B.fillRandom();
@@ -33,28 +33,28 @@ int main() {
 
 	A.reSize(m);
 	B.reSize(m);
-	matriz C(m, m);
+	matriz C(A.getRowsLength(), B.getColumnsLength());
 
-	cout << "Matriz A:" << endl;
+	cout << "Matriz A redimensionada:" << endl;
 	A.printMatriz();
-	cout << "Matriz B:" << endl;
+	cout << "Matriz B redimensionada:" << endl;
 	B.printMatriz();
 	
-	/*C.add(&A, &B);
+	C.add(&A, &B);
 
 	cout << "Suma:" << endl;
 	C.printMatriz();
-
+	
 	C.sub(&A, &B);
 
 	cout << "Resta:" << endl;
 	C.printMatriz();
-
+	
 	C.mult(&A, &B);
 
 	cout << "Multiplicacion:" << endl;
 	C.printMatriz();
-	*/
+	
 	return 0;
 }
 
@@ -71,7 +71,7 @@ int getMaxOfTwo(matriz* A , matriz* B) {
 	int i = 0;
 	int maxPow = 0;
 	while (maxPow < max) {
-		maxPow = pow(2, i);
+		maxPow = (int)pow(2, i);
 		i++;
 	}
 
