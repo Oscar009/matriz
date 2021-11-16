@@ -109,7 +109,7 @@ void matriz::reSize(int x) {
 void matriz::printMatriz() { 
 	for (int i = 0; i < rowsReSize; i++) {
 		for (int j = 0; j < columnsReSize; j++) {
-			std::cout << *(*(cells + i) + j) << " ";
+			std::cout << *(*(cells + i) + j) << "\t";
 		}
 		std::cout << "\n";
 	}

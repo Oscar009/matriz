@@ -18,7 +18,7 @@ using namespace std;
 int main() {
 	srand((unsigned)time(nullptr));
 
-	matriz A(3, 2);
+	matriz A(4, 1);
 	matriz B(2, 3);
 
 	A.fillRandom();
