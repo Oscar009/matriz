@@ -7,27 +7,28 @@
 
 class matriz
 {
-	//numero de celdas
 	int** cells;
-	int rows;//copia de original
-	int columns;//copia de original
-	//uso de variables para un reSize
-	int rowsReSize;
-	int columnsReSize;
+	int rows;
+	int columns;
+	int rowsBackup;
+	int columnsBackup;
+	int maxRandom;
 
 public:
-	matriz(int, int);
+	matriz(int, int, int);
+	matriz(matriz, int, int);
 	~matriz();
 
-	void add(matriz*, matriz*);
-	void sub(matriz*, matriz*);
-	void mult(matriz*, matriz*);
+	void suma(matriz*, matriz*);
+	void resta(matriz*, matriz*);
+	void multiplica(matriz*, matriz*);
 
 	int getCell(int, int);
+	void setCell(int, int, int);
 	int getRowsLength();
 	int getColumnsLength();
 	void fillRandom();
 	void reSize(int);
-	void printMatriz();
+	void printMatriz(int);
 };
 #endif

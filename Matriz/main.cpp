@@ -1,8 +1,8 @@
 /*
 AUTOR: Oscar Noe Ortiz Barba
 CURSO: Diseño y análisis de algoritmos
-PROGRAMA: 
-FECHA: 
+PROGRAMA: El algoritmo de Strassen
+FECHA: 19/11/2021
 */
 
 #include <iostream>
@@ -11,61 +11,66 @@ FECHA:
 #include <cmath>
 #include "matriz.h"
 
-int getMaxOfTwo(matriz*, matriz*);
+int getMax(int, int, int);
 
 using namespace std;
 
 int main() {
 	srand((unsigned)time(nullptr));
 
-	matriz A(4, 1);
-	matriz B(2, 3);
+	int a, b, c;
+	cout << "Entrada: ";
+	cin >> a >> b >> c;
+
+	cout << "Salida:" << endl;
+
+	matriz A(a, b, (a * c));
+	matriz B(b, c, (a * c));
 
 	A.fillRandom();
 	B.fillRandom();
 
 	cout << "Matriz A:" << endl;
-	A.printMatriz();
+	A.printMatriz(1);
 	cout << "Matriz B:" << endl;
-	B.printMatriz();
+	B.printMatriz(1);
 
-	int m = getMaxOfTwo(&A, &B);
+	int m = getMax(a, b, c);
 
 	A.reSize(m);
 	B.reSize(m);
-	matriz C(A.getRowsLength(), B.getColumnsLength());
 
-	cout << "Matriz A redimensionada:" << endl;
-	A.printMatriz();
-	cout << "Matriz B redimensionada:" << endl;
-	B.printMatriz();
-	
-	C.add(&A, &B);
+	cout << "Redimensionamiento de A:" << endl;
+	A.printMatriz(0);
+	cout << "Redimensionamiento de B:" << endl;
+	B.printMatriz(0);
+
+	matriz C(a, c, 0);
 
 	cout << "Suma:" << endl;
-	C.printMatriz();
-	
-	C.sub(&A, &B);
+	C.suma(&A, &B);
+	C.printMatriz(1);
 
 	cout << "Resta:" << endl;
-	C.printMatriz();
+	C.resta(&A, &B);
+	C.printMatriz(1);
 	
-	C.mult(&A, &B);
 
-	cout << "Multiplicacion:" << endl;
-	C.printMatriz();
-	
+	//cout << "Producto:" << endl;
+	//C.multiplica(&A, &B);
+	//C.printMatriz(1);
+
 	return 0;
 }
 
-//obtiene el valor de dimension mas grande entre dos matrices
+//obtiene el valor mayor en el arreglo
 //compara el maximo obtenido con la potencia de 2 más cercana igual o mayor
-int getMaxOfTwo(matriz* A , matriz* B) {
+int getMax(int a, int b, int c) {
 	int max = 0;
-	int a[] = { A->getColumnsLength(), A->getRowsLength(), B->getColumnsLength(), B->getRowsLength() };
+	int v[] = {a, b, c};
 
-	for (int i = 0; i < 4; i++) {
-		if (a[i] > max) max = a[i];
+	for (int i = 0; i < 3; i++) {
+		if (v[i] > max) max = v[i];
 	}
 
 	int i = 0;
