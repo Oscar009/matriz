@@ -64,7 +64,7 @@ int matriz::getColumnsLength() { return columns; }
 void matriz::fillRandom() {
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < columns; j++) {
-			setCell(i, j, rand() % (maxRandom + 1));
+			this->setCell(i, j, rand() % (maxRandom + 1));
 		}
 	}
 }
@@ -99,20 +99,10 @@ void matriz::reSize(int x) {
 }
 
 void matriz::printMatriz(int flag) { 
-	if (flag) {
-		for (int i = 0; i < rowsBackup; i++) {
-			for (int j = 0; j < columnsBackup; j++) {
-				std::cout << *(*(cells + i) + j) << "\t";
-			}
-			std::cout << "\n";
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < columns; j++) {
+			std::cout << *(*(cells + i) + j) << "\t";
 		}
-	}
-	else {
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++) {
-				std::cout << *(*(cells + i) + j) << "\t";
-			}
-			std::cout << "\n";
-		}
+		std::cout << "\n";
 	}
 }

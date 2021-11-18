@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <iostream>
 
+typedef enum { above, down } height;
+typedef enum { left, right } side;
+
 class matriz
 {
 	int** cells;
@@ -21,6 +24,7 @@ public:
 
 	void suma(matriz*, matriz*);
 	void resta(matriz*, matriz*);
+	void mult(matriz*, matriz*);
 	void multiplica(matriz*, matriz*);
 
 	int getCell(int, int);

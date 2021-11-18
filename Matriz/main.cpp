@@ -11,7 +11,7 @@ FECHA: 19/11/2021
 #include <cmath>
 #include "matriz.h"
 
-int getMax(int, int, int);
+int getReSize(int, int, int);
 
 using namespace std;
 
@@ -23,7 +23,7 @@ int main() {
 	cin >> a >> b >> c;
 
 	cout << "Salida:" << endl;
-
+	
 	matriz A(a, b, (a * c));
 	matriz B(b, c, (a * c));
 
@@ -35,7 +35,7 @@ int main() {
 	cout << "Matriz B:" << endl;
 	B.printMatriz(1);
 
-	int m = getMax(a, b, c);
+	int m = getReSize(a, b, c);
 
 	A.reSize(m);
 	B.reSize(m);
@@ -55,7 +55,6 @@ int main() {
 	C.resta(&A, &B);
 	C.printMatriz(1);
 	
-
 	//cout << "Producto:" << endl;
 	//C.multiplica(&A, &B);
 	//C.printMatriz(1);
@@ -63,22 +62,17 @@ int main() {
 	return 0;
 }
 
-//obtiene el valor mayor en el arreglo
-//compara el maximo obtenido con la potencia de 2 más cercana igual o mayor
-int getMax(int a, int b, int c) {
+int getReSize(int a, int b, int c) {
 	int max = 0;
 	int v[] = {a, b, c};
+	//obtiene el valor mayor de un arreglo
+	for (int i = 0; i < 3; i++) if (v[i] > max) max = v[i];
 
-	for (int i = 0; i < 3; i++) {
-		if (v[i] > max) max = v[i];
-	}
+	int n = 0;
+	//obtiene el logaritmo base 2 del max
+	n = ceilf(log(max) / log(2));
+	//eleva 2 a la n para obtener el valor de la redimension
+	n = pow(2, n);
 
-	int i = 0;
-	int maxPow = 0;
-	while (maxPow < max) {
-		maxPow = (int)pow(2, i);
-		i++;
-	}
-
-	return maxPow;
+	return n;
 }
