@@ -31,9 +31,9 @@ int main() {
 	B.fillRandom();
 
 	cout << "Matriz A:" << endl;
-	A.printMatriz(1);
+	A.printMatriz();
 	cout << "Matriz B:" << endl;
-	B.printMatriz(1);
+	B.printMatriz();
 
 	int m = getReSize(a, b, c);
 
@@ -41,19 +41,19 @@ int main() {
 	B.reSize(m);
 
 	cout << "Redimensionamiento de A:" << endl;
-	A.printMatriz(0);
+	A.printMatriz();
 	cout << "Redimensionamiento de B:" << endl;
-	B.printMatriz(0);
+	B.printMatriz();
 
 	matriz C(a, c, 0);
 
 	cout << "Suma:" << endl;
 	C.suma(&A, &B);
-	C.printMatriz(1);
+	C.printMatriz();
 
 	cout << "Resta:" << endl;
 	C.resta(&A, &B);
-	C.printMatriz(1);
+	C.printMatriz();
 	
 	//cout << "Producto:" << endl;
 	//C.multiplica(&A, &B);

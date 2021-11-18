@@ -33,6 +33,6 @@ public:
 	int getColumnsLength();
 	void fillRandom();
 	void reSize(int);
-	void printMatriz(int);
+	void printMatriz();
 };
 #endif

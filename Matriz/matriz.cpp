@@ -49,8 +49,22 @@ void matriz::resta(matriz* A, matriz* B) {
 	}
 }
 
+//SETRASSEN
 void matriz::multiplica(matriz* A, matriz* B) {
 	
+}
+
+void matriz::mult(matriz* A, matriz* B) {
+	for (int i = 0; i < A->getRowsLength(); i++) {
+		for (int j = 0; j < B->getColumnsLength(); j++) {
+			*(*(cells + i) + j) = 0;
+			for (int k = 0; k < B->getRowsLength(); k++) {
+				int val = 0;
+				val += (A->getCell(i, k) * B->getCell(k, j));
+				this->setCell(i, j, val);
+			}
+		}
+	}
 }
 
 int matriz::getCell(int i,	int j) { return (*(*(cells + i) + j)); }
@@ -98,7 +112,7 @@ void matriz::reSize(int x) {
 	}
 }
 
-void matriz::printMatriz(int flag) { 
+void matriz::printMatriz() { 
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < columns; j++) {
 			std::cout << *(*(cells + i) + j) << "\t";
