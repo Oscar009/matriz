@@ -13,7 +13,7 @@ FECHA: 19/11/2021
 
 int getReSize(int, int, int);
 
-using namespace std;
+using namespace std; 
 
 int main() {
 	srand((unsigned)time(nullptr));
@@ -26,7 +26,9 @@ int main() {
 	
 	matriz A(a, b, (a * c));
 	matriz B(b, c, (a * c));
+	int m = getReSize(a, b, c);
 
+	//llenado de matrices
 	A.fillRandom();
 	B.fillRandom();
 
@@ -35,8 +37,7 @@ int main() {
 	cout << "Matriz B:" << endl;
 	B.printMatriz();
 
-	int m = getReSize(a, b, c);
-
+	//redimensionamiento
 	A.reSize(m);
 	B.reSize(m);
 
@@ -45,19 +46,25 @@ int main() {
 	cout << "Redimensionamiento de B:" << endl;
 	B.printMatriz();
 
-	matriz C(a, c, 0);
+	matriz C(m, m, 0);
 
+	/*
 	cout << "Suma:" << endl;
-	C.suma(&A, &B);
-	C.printMatriz();
-
-	cout << "Resta:" << endl;
-	C.resta(&A, &B);
+	C = C.suma(A, B);
 	C.printMatriz();
 	
-	//cout << "Producto:" << endl;
-	//C.multiplica(&A, &B);
-	//C.printMatriz(1);
+	cout << "Resta:" << endl;
+	C = C.resta(A, B);
+	C.printMatriz();
+
+	cout << "Multiplicacion:" << endl;
+	C = C.multiplica(A, B);
+	C.printMatriz();
+	*/
+	
+	cout << "Producto:" << endl;
+	C = C.strassen(A, B);
+	//C.printMatriz();
 
 	return 0;
 }

@@ -5,16 +5,13 @@
 #include <stdlib.h>
 #include <iostream>
 
-typedef enum { above, down } height;
-typedef enum { left, right } side;
-
 class matriz
 {
+	typedef enum { above, down } height;
+	typedef enum { left, right } side;
 	int** cells;
 	int rows;
 	int columns;
-	int rowsBackup;
-	int columnsBackup;
 	int maxRandom;
 
 public:
@@ -22,10 +19,10 @@ public:
 	matriz(matriz, int, int);
 	~matriz();
 
-	void suma(matriz*, matriz*);
-	void resta(matriz*, matriz*);
-	void mult(matriz*, matriz*);
-	void multiplica(matriz*, matriz*);
+	matriz suma(matriz, matriz);
+	matriz resta(matriz, matriz);
+	matriz multiplica(matriz, matriz);
+	matriz strassen(matriz, matriz);
 
 	int getCell(int, int);
 	void setCell(int, int, int);
@@ -34,5 +31,6 @@ public:
 	void fillRandom();
 	void reSize(int);
 	void printMatriz();
+
 };
 #endif
